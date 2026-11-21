@@ -26,8 +26,6 @@ def main() -> None:
 
     pilot = Pilot.load()
     backend = BACKENDS[args.backend]()
-    if backend.name != "falso" and "sin-fijar" in pilot.raw["pesos"].values():
-        raise SystemExit("pin the model revisions in configs/piloto.toml [pesos] before a real run")
     runner = Runner(
         pilot, backend, args.salidas, lambda i: split_by_angle(i, tufts_names(i)), args.fotos,
         Tracker(args.salidas, pilot.raw["usd_por_hora"]),
