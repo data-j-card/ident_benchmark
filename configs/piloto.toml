@@ -5,9 +5,30 @@ lado = [832, 1248]
 usd_por_hora = 1.79
 tope_usd = 50
 
-[pesos]
-qwen = "sin-fijar"
-hidream = "sin-fijar"
+[musubi]
+repo = "kohya-ss/musubi-tuner"
+tag = "v0.3.6"
+commit = "f8a1b03794a49239a3539015075f5123d6c07d66"
+
+[pesos.qwen.dit]
+repo = "Comfy-Org/Qwen-Image-Edit"
+revision = "f68ace85e60b4a02a323e394253731947657b7d2"
+file = "split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors"
+
+[pesos.qwen.text_encoder]
+repo = "Comfy-Org/Qwen-Image"
+revision = "1f12b17be14c89b026c51a91d67c32f84bb047bc"
+file = "split_files/text_encoders/qwen_2.5_vl_7b.safetensors"
+
+[pesos.qwen.vae]
+repo = "Comfy-Org/Qwen-Image"
+revision = "1f12b17be14c89b026c51a91d67c32f84bb047bc"
+file = "split_files/vae/qwen_image_vae.safetensors"
+
+[pesos.hidream.dit]
+repo = "Comfy-Org/HiDream-O1-Image"
+revision = "7b75f4cd7e757d55d9bd1d30fb40375fb446f38c"
+file = "checkpoints/hidream_o1_image_bf16.safetensors"
 
 [entrenamiento_base]
 rank = 16

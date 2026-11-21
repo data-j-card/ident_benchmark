@@ -1,4 +1,5 @@
 import json
+import re
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
@@ -8,6 +9,22 @@ from benchid.jobs import GenJob, TrainSpec
 from benchid.paths import CONFIGS
 
 MODELS: tuple[Model, ...] = ("qwen", "hidream")
+COMMIT = re.compile(r"[0-9a-f]{40}")
+
+
+@dataclass(frozen=True)
+class Weight:
+    repo: str
+    revision: str
+    file: str
+
+    def __post_init__(self) -> None:
+        if not COMMIT.fullmatch(self.revision):
+            raise ValueError(f"{self.repo}: revision must be a full 40-hex commit, got {self.revision!r}")
+
+    @property
+    def ref(self) -> str:
+        return f"{self.repo}@{self.revision}/{self.file}"
 
 
 @dataclass(frozen=True)
@@ -24,6 +41,7 @@ class Pilot:
     subjects: dict[str, str]
     train_subjects: dict[str, str]
     development: tuple[str, ...]
+    weights: dict[Model, dict[str, Weight]]
 
     @classmethod
     def load(cls, configs: Path = CONFIGS) -> "Pilot":
@@ -37,6 +55,7 @@ class Pilot:
             subjects=fill(prompts["sujeto"]),
             train_subjects=fill(prompts["entrenamiento"]),
             development=tuple(str(i) for i in ids["desarrollo"]),
+            weights={m: {role: Weight(**w) for role, w in raw["pesos"][m].items()} for m in MODELS},
         )
 
     @property
@@ -70,7 +89,7 @@ class Pilot:
         return Phase(name, trains, gens)
 
     def _weights(self, model: Model) -> str:
-        return self.raw["pesos"][model]
+        return ";".join(f"{role}={w.ref}" for role, w in sorted(self.weights[model].items()))
 
     def _trains(self, name: str, cfg: dict) -> tuple[TrainSpec, ...]:
         base = self.raw["entrenamiento_base"]
