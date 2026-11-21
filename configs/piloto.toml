@@ -1,0 +1,31 @@
+semilla = 42
+repeticiones = 1
+token = "ohwx"
+lado = [832, 1248]
+usd_por_hora = 1.79
+tope_usd = 50
+
+[pesos]
+qwen = "sin-fijar"
+hidream = "sin-fijar"
+
+[entrenamiento_base]
+rank = 16
+lr = 5e-5
+epochs = 16
+
+[fases.nativos]
+brazos = ["qwen_referencias", "hidream_referencias"]
+
+[fases.sonda_hidream]
+identidades = 1
+
+[fases.captions]
+identidades = 2
+epocas_evaluadas = [8, 16]
+
+[fases.hiper]
+identidades = 2
+rangos = [16, 32]
+tasas = [5e-5, 1e-4]
+epocas_evaluadas = [8, 16]

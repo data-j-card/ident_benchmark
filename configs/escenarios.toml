@@ -1,0 +1,59 @@
+[sujeto]
+qwen_referencias = "Create a new photograph of the person shown in Picture 1, Picture 2 and Picture 3"
+qwen_lora = "Create a new photograph of {token} person shown in Picture 1, Picture 2 and Picture 3"
+hidream_referencias = "Create a new photograph of the person in the reference image"
+hidream_lora = "Create a new photograph of {token} person"
+
+[entrenamiento]
+qwen = "Create a new photograph of {token} person shown in Picture 1, Picture 2 and Picture 3"
+hidream = "a photo of {token} person"
+
+[[escenario]]
+id = "P01"
+encuadre = "primer_plano"
+texto = ", a beauty campaign photograph in a studio. Head and shoulders, alone, facing the camera with both eyes visible and a calm expression, plain soft beige seamless backdrop, large diffused key light from the front, clean natural skin, sharp focus on the eyes, 85mm lens, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P02"
+encuadre = "cuerpo_entero"
+texto = ", a fashion editorial photograph in a studio. Full body, standing alone with the entire body visible from head to shoes, face turned toward the camera with both eyes visible, wearing a tailored camel coat over a white shirt and dark trousers, solid terracotta backdrop, even studio lighting, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P03"
+encuadre = "rodillas_arriba"
+texto = ", an urban lookbook photograph. Framed from the knees up, walking alone along a city sidewalk in daylight, face turned toward the camera with both eyes visible, wearing a denim jacket, a plain grey t-shirt and black jeans, softly blurred storefronts behind, natural light, 50mm lens, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P04"
+encuadre = "plano_medio"
+texto = ", a product advertising photograph. Medium shot from the waist up, alone, holding a plain unlabeled white ceramic mug near the chest, looking at the camera with both eyes visible and a slight smile, bright minimal kitchen in the background, soft window light, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P05"
+encuadre = "plano_medio"
+texto = ", a lifestyle photograph in a living room. Medium shot, sitting alone on a grey sofa holding an open book, face turned toward the camera with both eyes visible, warm lamp light in the evening, cozy interior with plants, shallow depth of field, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P06"
+encuadre = "tres_cuartos"
+texto = ", a travel photograph. Three-quarter body shot, standing alone at a viewpoint above a rocky coastline, body turned slightly, face toward the camera with both eyes visible, wearing a light linen shirt, bright midday sun, deep blue sea and sky in the background, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P07"
+encuadre = "cintura_arriba"
+texto = ", a winter fashion photograph. Waist-up, standing alone in a snowy park, wearing a dark navy wool coat and a grey knitted scarf, no hat, face fully visible with both eyes toward the camera, soft overcast winter daylight, snow-covered trees softly blurred behind, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P08"
+encuadre = "plano_medio"
+texto = ", a golden hour photograph outdoors. Medium shot, standing alone in an open field, warm low sunlight falling on the face from the front side, face clearly lit with both eyes visible toward the camera, wearing a light knit sweater, soft orange sky behind, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P09"
+encuadre = "rodillas_arriba"
+texto = ", a sportswear advertising photograph. Framed from the knees up, standing alone on a running path in a green park, wearing a plain black athletic jacket and leggings, face turned toward the camera with both eyes visible, morning daylight, trees softly blurred behind, photorealistic, no text or logos."
+
+[[escenario]]
+id = "P10"
+encuadre = "cintura_arriba"
+texto = ", a corporate portrait. Waist-up, standing alone in a modern office with large windows, wearing a navy blazer over a white shirt, arms relaxed, looking at the camera with both eyes visible and a confident expression, neutral daylight, clean blurred background, photorealistic, no text or logos."
