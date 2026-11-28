@@ -12,6 +12,11 @@ MODELS: tuple[Model, ...] = ("qwen", "hidream")
 COMMIT = re.compile(r"[0-9a-f]{40}")
 
 
+def require_commit(repo: str, revision: str) -> None:
+    if not COMMIT.fullmatch(revision):
+        raise ValueError(f"{repo}: revision must be a full 40-hex commit, got {revision!r}")
+
+
 @dataclass(frozen=True)
 class Weight:
     repo: str
@@ -19,8 +24,7 @@ class Weight:
     file: str
 
     def __post_init__(self) -> None:
-        if not COMMIT.fullmatch(self.revision):
-            raise ValueError(f"{self.repo}: revision must be a full 40-hex commit, got {self.revision!r}")
+        require_commit(self.repo, self.revision)
 
     @property
     def ref(self) -> str:

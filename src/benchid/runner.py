@@ -17,7 +17,7 @@ class BudgetExhausted(RuntimeError):
     pass
 
 
-def _write_json(path: Path, data: dict) -> None:
+def write_json(path: Path, data: dict) -> None:
     tmp = path.with_suffix(".tmp")
     tmp.write_text(json.dumps(data, indent=2), encoding="utf-8")
     os.replace(tmp, path)
@@ -80,7 +80,7 @@ class Runner:
         record = {"phase": phase, "spec": asdict(spec), "backend": self.backend.name, "loss": list(result.loss),
                   "seconds": result.seconds, "vram_gb": result.vram_gb,
                   "checkpoints": {e: p.name for e, p in result.checkpoints.items()}}
-        _write_json(folder / "resultado.json", record)
+        write_json(folder / "resultado.json", record)
         if self.tracker:
             self.tracker.train(spec, record)
 
@@ -100,6 +100,6 @@ class Runner:
         os.replace(tmp, image)
         record = {"phase": phase, "job": asdict(job), "prompt": prompt, "backend": self.backend.name,
                   "refs": [r.name for r in refs], "seconds": result.seconds, "vram_gb": result.vram_gb}
-        _write_json(meta, record)
+        write_json(meta, record)
         if self.tracker:
             self.tracker.image(job, record, image)
