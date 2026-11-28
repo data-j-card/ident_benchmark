@@ -22,6 +22,12 @@ medicion = [
     "matplotlib==3.11.2",
 ]
 piloto = ["mlflow"]
+juez = [
+    "torch==2.5.1",
+    "transformers==4.49.0",
+    "accelerate==1.2.1",
+    "sentencepiece==0.2.0",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
